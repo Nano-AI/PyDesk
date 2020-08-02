@@ -8,7 +8,7 @@ def weather_setup():
     url = "https://www.google.com/search?q=what+is+the+weather+right+now"
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
-    with open('./config/settings.json', 'r') as f:
+    with open('./config/settings.json', 'r+') as f:
         data = json.load(f)
         if data['driver-dir'] == "":
             print("Didn't find Chrome driver... Installing...")
@@ -18,6 +18,8 @@ def weather_setup():
             print("Chrome Driver found in settings.json")
         print('Running Driver')
         driver = webdriver.Chrome(data['driver-dir'], chrome_options=options)
+    with open('./config/settings.json', 'w') as f:
+        f.write(json.dumps(data, indent=4))
 
 
 def get_weather() -> str:

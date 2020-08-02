@@ -55,14 +55,17 @@ class Window(QMainWindow):
         self.date.setFont(QFont("Arial, Helvetica, sans-serif", 34))
         self.time.setFont(QFont("Arial, Helvetica, sans-serif", 20))
         self.today_weather.setFont(QFont("Arial, Helvetica, sans-serif", 30))
+        self.location.setFont(QFont("Arial, Helvetica, sans-serif", 22))
+        self.location.adjustSize()
 
         # print(self.current_date['custom-date'])
         self.date.setText(str(self.current_date['custom-date']))
-        weather_data = get_weather()
+        weather_data = get_weather_text()
         self.today_weather.setText(weather_data[0])
         self.today_weather.adjustSize()
 
         self.location.setText(weather_data[1])
+        print(weather_data)
         self.location.adjustSize()
 
         self.make_window_full_undecorated()
@@ -126,5 +129,5 @@ class Window(QMainWindow):
                            data['time-settings']['position']['y'])
             self.today_weather.move(data['weather-settings']['position']['x'],
                                     data['weather-settings']['position']['y'])
-            self.location.move(data['weather-settings']['location-settings']['position']['x'],
+            self.location.move(data['weather-settings']['location-settings']['position']['x'] - self.location.width(),
                                data['weather-settings']['location-settings']['position']['y'])

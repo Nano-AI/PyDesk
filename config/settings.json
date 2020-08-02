@@ -1,37 +1,37 @@
 {
-  "background-url": "./images/beach.jpg",
-  "date-settings": {
-    "_comment": "These formats go by the datetime Python library. The color is in RGB format.",
-    "color": "255, 255, 255",
-    "format": "%m/%d/%Y",
-    "position": {
-      "x": 25,
-      "y": 25
-    }
-  },
-  "driver-dir": "",
-  "time-settings": {
-    "_comment": "These formats go by the datetime Python library. The color is in RGB format.",
-    "color": "255, 255, 255",
-    "format": "%H:%M:%S",
-    "position": {
-      "x": 25,
-      "y": 75
-    }
-  },
-  "weather-settings": {
-    "weather-type": "F",
-    "color": "255, 255, 255",
-    "position": {
-      "x": 1800,
-      "y": 25
+    "background-url": "./images/beach.jpg",
+    "date-settings": {
+        "_comment": "These formats go by the datetime Python library. The color is in RGB format.",
+        "color": "255, 255, 255",
+        "format": "%m/%d/%Y",
+        "position": {
+            "x": 25,
+            "y": 25
+        }
     },
-    "location-settings": {
-      "color": "255, 255, 255",
-      "position": {
-        "x": 1800,
-        "y": 50
-      }
+    "driver-dir": "C:\\Users\\adiba\\.wdm\\drivers\\chromedriver\\win32\\84.0.4147.30\\chromedriver.exe",
+    "time-settings": {
+        "_comment": "These formats go by the datetime Python library. The color is in RGB format.",
+        "color": "255, 255, 255",
+        "format": "%H:%M:%S",
+        "position": {
+            "x": 25,
+            "y": 75
+        }
+    },
+    "weather-settings": {
+        "weather-type": "F",
+        "color": "255, 255, 255",
+        "position": {
+            "x": 1800,
+            "y": 25
+        },
+        "location-settings": {
+            "color": "255, 255, 255",
+            "position": {
+                "x": 1800,
+                "y": 60
+            }
+        }
     }
-  }
 }
