@@ -6,6 +6,7 @@ from typing import Dict
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets
 
 from src.GetWeather import *
 
@@ -43,12 +44,19 @@ class Window(QMainWindow):
         self.date = QLabel(self)
         self.today_weather = QLabel(self)
 
+        self.sizeObj = QtWidgets.QDesktopWidget().screenGeometry(-1)
+        self.sHeight = self.sizeObj.height()
+        self.sWidth = self.sizeObj.width()
+
+        # print(self.sHeight)
+        # print(self.sWidth)
+
         self.add_styles()
         self.current_date = get_date()
 
         self.date.setFont(QFont("Arial, Helvetica, sans-serif", 34))
         self.time.setFont(QFont("Arial, Helvetica, sans-serif", 20))
-        self.today_weather.setFont(QFont("Arial, Helvetica, sans-serif", 18))
+        self.today_weather.setFont(QFont("Arial, Helvetica, sans-serif", 30))
 
         # print(self.current_date['custom-date'])
         self.date.setText(str(self.current_date['custom-date']))
@@ -58,6 +66,8 @@ class Window(QMainWindow):
         self.make_window_full_undecorated()
 
         self.time.setText(get_time())
+
+        self.update_weather()
 
         self.show()
         self.update_time()
@@ -73,6 +83,11 @@ class Window(QMainWindow):
             self.date.setText(self.current_date['custom-date'])
             self.date.adjustSize()
         del date
+
+    def update_weather(self):
+        threading.Timer(300.0, lambda: self.update_weather()).start()
+        self.today_weather.setText(get_weather_text())
+        self.today_weather.adjustSize()
 
     def make_window_full_undecorated(self):
         self.setWindowState(Qt.WindowMaximized)
@@ -95,6 +110,12 @@ class Window(QMainWindow):
             )
 
     def add_styles(self):
-        self.date.move(25, 25)
-        self.time.move(25, 75)
-        self.today_weather.move(1000, 25)
+        with open("./config/settings.json") as f:
+            data = json.load(f)
+            # print(self.sWidth, self.sHeight)
+            self.date.move(data['date-settings']['position']['x'],
+                           data['date-settings']['position']['y'])
+            self.time.move(data['time-settings']['position']['x'],
+                           data['time-settings']['position']['y'])
+            self.today_weather.move(data['weather-settings']['position']['x'],
+                                    data['weather-settings']['position']['y'])

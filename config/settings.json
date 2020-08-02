@@ -6,7 +6,7 @@
     "format": "%m/%d/%Y",
     "position": {
       "x": 25,
-      "y": 75
+      "y": 25
     }
   },
   "driver-dir": "C:\\Users\\adiba\\.wdm\\drivers\\chromedriver\\win32\\84.0.4147.30\\chromedriver.exe",
@@ -16,11 +16,14 @@
     "format": "%H:%M:%S",
     "position": {
       "x": 25,
-      "y": 25
+      "y": 75
     }
   },
   "weather-settings": {
     "weather-type": "F",
-    "weather-area": "current"
+    "position": {
+      "x": 1800,
+      "y": 25
+    }
   }
 }

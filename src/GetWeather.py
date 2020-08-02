@@ -34,3 +34,19 @@ def get_weather() -> str:
         for post in weather:
             return_arr.append(post.text)
     return return_arr[0]
+
+
+def get_weather_text() -> str:
+    driver.get(url)
+    with open('./config/settings.json') as weatherF:
+        weatherData = json.load(weatherF)
+        if weatherData['weather-settings']['weather-type'].lower() == 'f':
+            weather = driver.find_elements_by_id("wob_tm")
+        elif weatherData['weather-settings']['weather-type'].lower() == 'c':
+            weather = driver.find_elements_by_id("wob_tmm")
+        else:
+            raise Exception(f'Unknown value {weatherData["weather-type"]}')
+        return_arr = []
+        for post in weather:
+            return_arr.append(post.text)
+        return str(return_arr[0]) + u'\xb0' + weatherData['weather-settings']['weather-type'].upper()
