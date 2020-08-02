@@ -11,7 +11,7 @@ You will need [Python](https://www.python.org/) installed. (I am using version
 
 ### Installing
 Open up your terminal in the directory you stored the program in and
-run `pip install -r requirements.txt`
+run `pip install -r requirements.txt`.
 
 ## Deployment
 Run `python main.py` in the directory where the program is stored.
