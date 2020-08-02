@@ -43,13 +43,11 @@ class Window(QMainWindow):
         self.time = QLabel(self)
         self.date = QLabel(self)
         self.today_weather = QLabel(self)
+        self.location = QLabel(self)
 
         self.sizeObj = QtWidgets.QDesktopWidget().screenGeometry(-1)
         self.sHeight = self.sizeObj.height()
         self.sWidth = self.sizeObj.width()
-
-        # print(self.sHeight)
-        # print(self.sWidth)
 
         self.add_styles()
         self.current_date = get_date()
@@ -60,8 +58,12 @@ class Window(QMainWindow):
 
         # print(self.current_date['custom-date'])
         self.date.setText(str(self.current_date['custom-date']))
-        self.today_weather.setText(get_weather())
+        weather_data = get_weather()
+        self.today_weather.setText(weather_data[0])
         self.today_weather.adjustSize()
+
+        self.location.setText(weather_data[1])
+        self.location.adjustSize()
 
         self.make_window_full_undecorated()
 
@@ -86,7 +88,8 @@ class Window(QMainWindow):
 
     def update_weather(self):
         threading.Timer(300.0, lambda: self.update_weather()).start()
-        self.today_weather.setText(get_weather_text())
+        data = get_weather_text()
+        self.today_weather.setText(data[0])
         self.today_weather.adjustSize()
 
     def make_window_full_undecorated(self):
@@ -106,7 +109,11 @@ class Window(QMainWindow):
                 f"color: rgb({data['date-settings']['color']}); background: transparent; border-image: none"
             )
             self.today_weather.setStyleSheet(
-                f"color: rgb({data['date-settings']['color']}); background: transparent; border-image: none"
+                f"color: rgb({data['weather-settings']['color']}); background: transparent; border-image: none"
+            )
+            self.location.setStyleSheet(
+                f"color: rgb({data['weather-settings']['location-settings']['color']}); background: transparent; "
+                f"border-image: none "
             )
 
     def add_styles(self):
@@ -119,3 +126,5 @@ class Window(QMainWindow):
                            data['time-settings']['position']['y'])
             self.today_weather.move(data['weather-settings']['position']['x'],
                                     data['weather-settings']['position']['y'])
+            self.location.move(data['weather-settings']['location-settings']['position']['x'],
+                               data['weather-settings']['location-settings']['position']['y'])
