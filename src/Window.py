@@ -65,7 +65,7 @@ class Window(QMainWindow):
         self.today_weather.adjustSize()
 
         self.location.setText(weather_data[1])
-        print(weather_data)
+        # print(weather_data)
         self.location.adjustSize()
 
         self.make_window_full_undecorated()
@@ -123,11 +123,11 @@ class Window(QMainWindow):
         with open("./config/settings.json") as f:
             data = json.load(f)
             # print(self.sWidth, self.sHeight)
-            self.date.move(data['date-settings']['position']['x'],
+            self.date.move(data['date-settings']['position']['x'],  # + self.date.width(),
                            data['date-settings']['position']['y'])
-            self.time.move(data['time-settings']['position']['x'],
+            self.time.move(data['time-settings']['position']['x'],  # + self.time.width(),
                            data['time-settings']['position']['y'])
-            self.today_weather.move(data['weather-settings']['position']['x'],
+            self.today_weather.move(data['weather-settings']['position']['x'] - self.today_weather.width(),
                                     data['weather-settings']['position']['y'])
             self.location.move(data['weather-settings']['location-settings']['position']['x'] - self.location.width(),
                                data['weather-settings']['location-settings']['position']['y'])

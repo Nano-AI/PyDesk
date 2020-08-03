@@ -1,4 +1,4 @@
-from src.window import *
+from src.Window import *
 
 if __name__ == '__main__':
     import sys

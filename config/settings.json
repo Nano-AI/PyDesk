@@ -20,18 +20,20 @@
         }
     },
     "weather-settings": {
-        "weather-type": "F",
+        "_comment": "Leave the location area empty for default location.",
         "color": "255, 255, 255",
-        "position": {
-            "x": 1800,
-            "y": 25
-        },
+        "location": "adf lasdjfas;dkjf al;skdjf alk;sjf lk;a f;lakj; lks",
         "location-settings": {
             "color": "255, 255, 255",
             "position": {
                 "x": 1800,
                 "y": 60
             }
-        }
+        },
+        "position": {
+            "x": 1800,
+            "y": 25
+        },
+        "weather-type": "F"
     }
 }
