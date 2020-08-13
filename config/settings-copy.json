@@ -1,5 +1,5 @@
 {
-    "background-url": "./images/beach.jpg",
+    "background-url": "./media/beach.jpg",
     "date-settings": {
         "_comment": "These formats go by the datetime Python library. The color is in RGB format.",
         "color": "255, 255, 255",
@@ -19,6 +19,7 @@
             "y": 75
         }
     },
+    "tray-icon-path": "./media/python.png",
     "weather-settings": {
         "_comment": "Leave the location area empty for default location.",
         "color": "255, 255, 255",
